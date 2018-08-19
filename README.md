@@ -1,4 +1,4 @@
-# Prims-Algorithm
+# Prim's-Algorithm
 
 This repository is to maintain a grade XII Computer Science Project done by Kiranbaskar Velmurugan and Akshay Dhansoia. The Project is to
 show an implementation of Prim's Algorithm to solve a problem. The problem statement can be formulated as follows: 
