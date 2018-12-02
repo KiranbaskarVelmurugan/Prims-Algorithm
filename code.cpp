@@ -30,7 +30,7 @@ public:
 			n->next = NULL;
 			rear = n;
 		}
-		length++;
+		++length;
 	}
 
 	void pushFront(int x) {
@@ -47,6 +47,30 @@ public:
 			n->prev = NULL;
 			front = n;
 		}
+		++length;
+	}
+
+	int addAfter(int x) {
+		node *search = front;
+		while(search->next != NULL && search->number != x);
+		if(search->number != x) {
+			cout<< "Node not found!";
+			return -1;
+		}
+		else if(search->number == x && search->next == NULL) {
+			pushBack(x);
+			return 1;
+		}
+		else {
+			node *n = new node;
+			n->number = x;
+			node *next_element = n->next; //The next node to the one with x as a member in the original linked list
+			next_element->prev = n;
+			search->next = n;
+			n->next = next_element;
+			n->prev = search;
+			return 1;
+		}
 	}
 
 	int delElement(int x) {
@@ -54,6 +78,7 @@ public:
 			cout<<"Underflow!";
 			return -1;
 		}
+
 		node *temp = front;
 		while(temp->next != NULL) {
 			if(temp->number == x) {
