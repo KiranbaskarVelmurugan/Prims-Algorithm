@@ -1,5 +1,6 @@
 #include<iostream.h>
 #include<conio.h>
+#include<fstream.h>
 
 struct node {
 	int number;
@@ -119,6 +120,9 @@ public:
 	} 
 };
 
+int take_input(int n) {
+		
+}
 
 void main() {
 }
