@@ -16,7 +16,7 @@ public:
 		length = 0;
 	}
 
-	void addElement(int x) { //Elements only added to rear
+	void pushBack(int x) {
 		node *n = new node;
 		n->number = x;
 		if(front == NULL) {
@@ -25,9 +25,8 @@ public:
 			n->prev = NULL;
 		}
 		else {
-			node *temp = rear;
-			temp->next = n;
-			n->prev = temp;
+			rear->next = n;
+			n->prev = rear;
 			n->next = NULL;
 			rear = n;
 		}
@@ -53,7 +52,7 @@ public:
 				break;
 			}
 			else {
-				cout<<"Element "<<x<<" not found!";
+				cout<<"Element "<< x <<" not found!";
 			}
 		}
 	} 
