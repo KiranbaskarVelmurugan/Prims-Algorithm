@@ -33,6 +33,22 @@ public:
 		length++;
 	}
 
+	void pushFront(int x) {
+		node *n = new node;
+		n->number = x;
+		if(front == NULL) {
+			front = rear = n;
+			n->next = NULL;
+			n->prev = NULL;
+		}
+		else {
+			front->prev = n;
+			n->next = front;
+			n->prev = NULL;
+			front = n;
+		}
+	}
+
 	int delElement(int x) {
 		if (front == NULL) {
 			cout<<"Underflow!";
