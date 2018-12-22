@@ -119,6 +119,23 @@ public:
 	} 
 };
 
+class Location {
+	char name[30];
+	int id;
+	static int assignid = 0;
+public:
+	Location(char a[]) {
+		strcpy(name,a);
+		id = assignid;
+		++assignid;
+	}
+
+	void getDetails() {
+		cout<<"Location name: ";
+		puts(name);
+		cout<<"Id: "<<id;
+	}
+};
 
 void main() {
 }
