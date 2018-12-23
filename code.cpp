@@ -3,7 +3,7 @@
 #include <conio.h>
 
 struct node {
-	int number;
+	Location location;
 	node *next;
 	node *prev;
 };
@@ -17,9 +17,9 @@ public:
 		length = 0;
 	}
 
-	void pushBack(int x) {
+	void pushBack(Location x) {
 		node *n = new node;
-		n->number = x;
+		assignDetails(n->location, x);
 		if(front == NULL) {
 			front = rear = n;
 			n->next = NULL;
@@ -34,9 +34,9 @@ public:
 		++length;
 	}
 
-	void pushFront(int x) {
+	void pushFront(Location x) {
 		node *n = new node;
-		n->number = x;
+		assignDetails(n->location, x);
 		if(front == NULL) {
 			front = rear = n;
 			n->next = NULL;
@@ -51,19 +51,19 @@ public:
 		++length;
 	}
 
-	int addAfter(int x) {
+	int addAfter(Location x) {
 		node *search = front;
-		while(search->next != NULL && search->number != x);
-		if(search->number != x) {
+		while(search->next != NULL && !isEqual(search->location, x));
+		if(!isEqual(search->location, x)) {
 			cout<< "Node not found!";
 			return -1;
 		}
-		else if(search->number == x && search->next == NULL) {
+		else if(isEqual(search->location, x) && search->next == NULL) {
 			pushBack(x);
 		}
 		else {
 			node *n = new node;
-			n->number = x;
+			assignDetails(n->location, x);
 			node *next_element = search->next; //The next node to the one with x as a member in the original linked list
 			next_element->prev = n;
 			search->next = n;
@@ -74,19 +74,19 @@ public:
 		return 1;
 	}
 
-	addBefore(int x) {
+	addBefore(Location x) {
 		node *search = front;
-		while(search->next != NULL && search->number != x);
-		if(search->number != x) {
+		while(search->next != NULL && !isEqual(search->location, x));
+		if(!isEqual(search->location, x)) {
 			cout<< "Node not found!";
 			return -1;
 		}
-		else if(search->number == x && search->prev == NULL) {
+		else if(isEqual(search->location, x) && search->prev == NULL) {
 			pushFront(x);
 		}
 		else {
 			node *n = new node;
-			n->number = x;
+			assignDetails(n->location, x);
 			node *prev_element = search->prev; //The previous node to the one with x as a member in the original linked list
 			prev_element->next = n;
 			search->prev = n;
@@ -97,14 +97,14 @@ public:
 		return 1;
 	}
 
-	int delNode(int x) {
+	int delNode(Location x) {
 		if (front == NULL) {
 			cout<<"Underflow!";
 			return -1;
 		}
 		node *temp = front;
 		while(temp->next != NULL) {
-			if(temp->number == x) {
+			if(isEqual(temp->location, x)) {
 				cout<<"Removing "<<x;
 				node *p = temp->prev;
 				node *n = temp->next;
@@ -122,19 +122,11 @@ public:
 
 class Location {
 	char name[30];
-	int id;
 	long int least_distance_away;
-	static int assignid = 0;
 public:
 	Location(char a[]) {
 		strcpy(name,a);
 		least_distance_away = 9999;
-		id = assignid;
-		++assignid;
-	}
-
-	~Location() {
-		--assignid;
 	}
 
 	int isEqual(Location a, Location b) {
@@ -146,14 +138,12 @@ public:
 
 	void assignDetails(Location a, Location b) {
 		strcpy(a.name, b.name);
-		a.id = b.id;
 		a.least_distance_away = b. least_distance_away;
 	}
 
 	void getDetails() {
 		cout<<"Location name: ";
 		puts(name);
-		cout<<"Id: "<<id;
 	}
 };
 
