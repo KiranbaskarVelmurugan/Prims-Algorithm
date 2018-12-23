@@ -133,6 +133,16 @@ public:
 		++assignid;
 	}
 
+	~Location() {
+		--assignid;
+	}
+
+	void assignDetails(Location a, Location b) {
+		strcpy(a.name, b.name);
+		a.id = b.id;
+		a.least_distance_away = b. least_distance_away;
+	}
+
 	void getDetails() {
 		cout<<"Location name: ";
 		puts(name);
