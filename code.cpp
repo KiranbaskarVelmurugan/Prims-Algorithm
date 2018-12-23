@@ -2,6 +2,9 @@
 #include <fstream.h>
 #include <conio.h>
 
+const int no_of_locations = 5;
+int & size = no_of_locations;
+
 struct node {
 	Location location;
 	node *next;
@@ -101,7 +104,7 @@ public:
 		return 1;
 	}
 
-	addBefore(Location x) {
+	int addBefore(Location x) {
 		node *search = front;
 		while(search->next != NULL && !isEqual(search->location, x));
 		if(!isEqual(search->location, x)) {
@@ -146,6 +149,25 @@ public:
 		return -1;
 	} 
 };
+
+int graph[size][size];
+char Location_names[size][30];
+
+int getInput() {
+	fstream file;
+	file.open("input_file.txt", ios::in);
+	while(!file.eof()) {
+		for(int i = 0; i < size; i++) {
+			file.getline(Location_names[i], 30);
+		}
+		for(int j = 0; j < size; j++) {
+			for(int k = 0; k < size; k++) {
+				file>>graph[j][k];
+			}
+		}
+	}
+	f.close();
+}
 
 void main() {
 }
