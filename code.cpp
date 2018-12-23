@@ -5,7 +5,7 @@
 #include <string.h>
 
 const int no_of_locations = 5;
-const int & size = no_of_locations;
+const int size = no_of_locations;
 
 class Location {
 public:
@@ -199,7 +199,7 @@ void PrimsAlg() {
 				}
 			}
 		}
-		delNode((list.front)->location);
+		list.delNode((list.front)->location);
 	}
 	for(int r = 0; r < size; r++) {
 		for(int c = 0; c < size; c++) {
