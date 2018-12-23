@@ -137,6 +137,13 @@ public:
 		--assignid;
 	}
 
+	int isEqual(Location a, Location b) {
+		if(strcmp(a.name, b.name) == 0) {
+			return 1;
+		}
+		return 0;
+	}
+
 	void assignDetails(Location a, Location b) {
 		strcpy(a.name, b.name);
 		a.id = b.id;
