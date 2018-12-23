@@ -1,6 +1,8 @@
 #include <iostream.h>
 #include <fstream.h>
 #include <conio.h>
+#include <string.h>
+#include <stdio.h>
 
 const int no_of_locations = 5;
 int & size = no_of_locations;
