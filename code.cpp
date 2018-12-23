@@ -11,6 +11,10 @@ class Location {
 public:
 	char name[30];
 	long int least_distance_away;
+
+	Location () {
+	}
+
 	Location(char a[]) {
 		strcpy(name,a);
 		least_distance_away = 9999;
