@@ -12,9 +12,9 @@ struct node {
 };
 
 class Location {
+public:
 	char name[30];
 	long int least_distance_away;
-public:
 	Location(char a[]) {
 		strcpy(name,a);
 		least_distance_away = 9999;
@@ -39,9 +39,9 @@ public:
 };
 
 class Doubly_Linked_list {
+public:
 	node *front, *rear;
 	int length;
-public:
 	Doubly_Linked_list() {
 		front = rear = NULL;
 		length = 0;
@@ -135,7 +135,6 @@ public:
 		node *temp = front;
 		while(temp->next != NULL) {
 			if(isEqual(temp->location, x)) {
-				cout<<"Removing "<<x;
 				node *p = temp->prev;
 				node *n = temp->next;
 				p->next = n;
@@ -151,14 +150,26 @@ public:
 };
 
 int graph[size][size];
-char Location_names[size][30];
+char temp[30];
+Location places[size];
+
+int indexOfPlace(char* a) {
+	for(int i = 0; i < size; i++) {
+		if(strcmp(a, places[i].name) == 0){
+			return i;
+		}
+	}
+	return -1;
+}
 
 int getInput() {
 	fstream file;
 	file.open("input_file.txt", ios::in);
 	while(!file.eof()) {
 		for(int i = 0; i < size; i++) {
-			file.getline(Location_names[i], 30);
+			file.getline(temp, 30);
+			Location loc(temp);//temp is global so it might not get truncated properly
+			assignDetails(places[i], loc);
 		}
 		for(int j = 0; j < size; j++) {
 			for(int k = 0; k < size; k++) {
@@ -169,5 +180,34 @@ int getInput() {
 	f.close();
 }
 
+void PrimsAlg() {
+	Doubly_Linked_list list;
+	for(int i = 0; i < size; i++) {
+		list.pushBack(places[i]);
+	}
+	while(list.length != 0) {
+		int row = indexOfPlace(((list.front)->location).name);
+		for(int j = 0; j < size; j++) {
+			if(graph[row][j] != 0) {
+				if((places[row]).least_distance_away > graph[row][j];){
+					(places[row]).least_distance_away = graph[row][j];
+				}
+				else {
+					(places[row]).least_distance_away = 0;
+				}
+			}
+		}
+		delNode((list.front)->location);
+	}
+	for(int r = 0; r < size; r++) {
+		for(int c = 0; c < size; c++) {
+			if(graph[r][c] != 0) {
+				graph[c][r] = graph[r][c];
+			}
+		}
+	}
+}
+
 void main() {
+
 }
