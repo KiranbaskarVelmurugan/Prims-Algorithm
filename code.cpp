@@ -8,6 +8,33 @@ struct node {
 	node *prev;
 };
 
+class Location {
+	char name[30];
+	long int least_distance_away;
+public:
+	Location(char a[]) {
+		strcpy(name,a);
+		least_distance_away = 9999;
+	}
+
+	int isEqual(Location a, Location b) {
+		if(strcmp(a.name, b.name) == 0) {
+			return 1;
+		}
+		return 0;
+	}
+
+	void assignDetails(Location a, Location b) {
+		strcpy(a.name, b.name);
+		a.least_distance_away = b. least_distance_away;
+	}
+
+	void getDetails() {
+		cout<<"Location name: ";
+		puts(name);
+	}
+};
+
 class Doubly_Linked_list {
 	node *front, *rear;
 	int length;
@@ -119,34 +146,6 @@ public:
 		return -1;
 	} 
 };
-
-class Location {
-	char name[30];
-	long int least_distance_away;
-public:
-	Location(char a[]) {
-		strcpy(name,a);
-		least_distance_away = 9999;
-	}
-
-	int isEqual(Location a, Location b) {
-		if(strcmp(a.name, b.name) == 0) {
-			return 1;
-		}
-		return 0;
-	}
-
-	void assignDetails(Location a, Location b) {
-		strcpy(a.name, b.name);
-		a.least_distance_away = b. least_distance_away;
-	}
-
-	void getDetails() {
-		cout<<"Location name: ";
-		puts(name);
-	}
-};
-
 
 void main() {
 }
