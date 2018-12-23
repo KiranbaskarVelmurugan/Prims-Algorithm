@@ -1,17 +1,11 @@
 #include <iostream.h>
 #include <fstream.h>
 #include <conio.h>
-#include <string.h>
 #include <stdio.h>
+#include <string.h>
 
 const int no_of_locations = 5;
-int & size = no_of_locations;
-
-struct node {
-	Location location;
-	node *next;
-	node *prev;
-};
+const int & size = no_of_locations;
 
 class Location {
 public:
@@ -22,22 +16,28 @@ public:
 		least_distance_away = 9999;
 	}
 
-	int isEqual(Location a, Location b) {
-		if(strcmp(a.name, b.name) == 0) {
-			return 1;
-		}
-		return 0;
-	}
-
-	void assignDetails(Location a, Location b) {
-		strcpy(a.name, b.name);
-		a.least_distance_away = b. least_distance_away;
-	}
-
 	void getDetails() {
 		cout<<"Location name: ";
 		puts(name);
 	}
+};
+
+int isEqual(Location a, Location b) {
+	if(strcmp(a.name, b.name) == 0) {
+		return 1;
+	}
+	return 0;
+}
+
+void assignDetails(Location a, Location b) {
+	strcpy(a.name, b.name);
+	a.least_distance_away = b. least_distance_away;
+}
+
+struct node {
+	Location location;
+	node *next;
+	node *prev;
 };
 
 class Doubly_Linked_list {
@@ -179,7 +179,7 @@ int getInput() {
 			}
 		}
 	}
-	f.close();
+	file.close();
 }
 
 void PrimsAlg() {
