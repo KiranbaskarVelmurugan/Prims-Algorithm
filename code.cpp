@@ -164,7 +164,7 @@ int indexOfPlace(char* a) {
 	return -1;
 }
 
-int getInput() {
+void getInput() {
 	fstream file;
 	file.open("input_file.txt", ios::in);
 	while(!file.eof()) {
@@ -191,7 +191,7 @@ void PrimsAlg() {
 		int row = indexOfPlace(((list.front)->location).name);
 		for(int j = 0; j < size; j++) {
 			if(graph[row][j] != 0) {
-				if((places[row]).least_distance_away > graph[row][j];){
+				if((places[row]).least_distance_away > graph[row][j]) {
 					(places[row]).least_distance_away = graph[row][j];
 				}
 				else {
