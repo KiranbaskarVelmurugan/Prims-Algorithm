@@ -1,5 +1,6 @@
-#include<iostream.h>
-#include<conio.h>
+#include <iostream.h>
+#include <fstream.h>
+#include <conio.h>
 
 struct node {
 	int number;
@@ -122,10 +123,12 @@ public:
 class Location {
 	char name[30];
 	int id;
+	long int least_distance_away;
 	static int assignid = 0;
 public:
 	Location(char a[]) {
 		strcpy(name,a);
+		least_distance_away = 9999;
 		id = assignid;
 		++assignid;
 	}
@@ -136,6 +139,7 @@ public:
 		cout<<"Id: "<<id;
 	}
 };
+
 
 void main() {
 }
