@@ -33,7 +33,7 @@ int isEqual(Location a, Location b) {
 	return 0;
 }
 
-void assignDetails(Location a, Location b) {
+void assignDetails(Location &a, Location &b) {
 	strcpy(a.name, b.name);
 	a.least_distance_away = b. least_distance_away;
 }
