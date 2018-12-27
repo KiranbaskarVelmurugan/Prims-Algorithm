@@ -138,6 +138,20 @@ public:
 			cout<<"Underflow!";
 			return -1;
 		}
+		if(strcmp(front->location.name, x.name) == 0) {
+			node* temp = front;
+			front = front->next;
+			delete temp;
+			--length;
+			return 1;
+		}
+		if(strcmp(rear->location.name, x.name) == 0) {
+			node *temp = rear;
+			rear = rear->prev;
+			delete temp;
+			--length;
+			return 1;
+		}
 		node *temp = front;
 		while(temp->next != NULL) {
 			if(isEqual(temp->location, x)) {
@@ -149,10 +163,11 @@ public:
 				--length;
 				return 1;
 			}
+			temp = temp->next;
 		}
 		cout<<"Node not found!";
 		return -1;
-	} 
+	}
 };
 
 int graph[size][size];
