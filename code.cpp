@@ -209,14 +209,19 @@ void PrimsAlg() {
 		list.pushBack(places[i]);
 	}
 	while(list.length != 0) {
-		int row = indexOfPlace(((list.front)->location).name);
+		int row = indexOfPlace((list.front)->location);
+		int indexofmin = 0;
 		for(int j = 0; j < size; j++) {
 			if(graph[row][j] != 0) {
 				if((places[row]).least_distance_away > graph[row][j]) {
 					(places[row]).least_distance_away = graph[row][j];
+					if(j > 0) {
+						graph[row][indexofmin] = 0;
+						indexofmin = j;
+					}
 				}
 				else {
-					(places[row]).least_distance_away = 0;
+					graph[row][j] = 0;
 				}
 			}
 		}
