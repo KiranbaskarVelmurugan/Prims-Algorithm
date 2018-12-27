@@ -186,12 +186,14 @@ int indexOfPlace(Location x) {
 void getInput() {
 	fstream file;
 	file.open("input.txt", ios::in);
-	while(!file.eof()) {
+	int ch = 1;
+	while(!file.eof() && ch == 1) {
 		for(int i = 0; i < size; i++) {
 			file.getline(temp, 30);
 			Location loc(temp);//temp is global so it might not get truncated properly
 			assignDetails(places[i], loc);
 		}
+		ch = 0;
 		for(int j = 0; j < size; j++) {
 			for(int k = 0; k < size; k++) {
 				file>>graph[j][k];
