@@ -174,9 +174,9 @@ int graph[size][size];
 char temp[30];
 Location places[size];
 
-int indexOfPlace(char* a) {
+int indexOfPlace(Location x) {
 	for(int i = 0; i < size; i++) {
-		if(strcmp(a, places[i].name) == 0){
+		if(strcmp(x.name, places[i].name) == 0){
 			return i;
 		}
 	}
