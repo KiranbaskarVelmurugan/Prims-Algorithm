@@ -253,5 +253,4 @@ void main() {
 		}
 		cout<<endl;
 	}
-	cin>>i;
 }
