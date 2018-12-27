@@ -237,6 +237,7 @@ void PrimsAlg() {
 }
 
 void main() {
+	getInput();
 	cout<<"Original Graph: "<<endl<<endl;
 	for(int i = 0; i < size; i++) {
 		for(int j = 0; j < size; j++) {
@@ -244,12 +245,11 @@ void main() {
 		}
 		cout<<endl;
 	}
-	getInput();
 	PrimsAlg();
 	cout<<endl<<"Minimal Spanning Tree: :"<<endl<<endl;
-	for(int j = 0; i < size; i++) {
-		for(int k = 0; j < size; j++) {
-			cout<<graph[i][j]<<" ";
+	for(int j = 0; j < size; j++) {
+		for(int k = 0; k < size; k++) {
+			cout<<graph[j][k]<<" ";
 		}
 		cout<<endl;
 	}
