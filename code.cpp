@@ -185,7 +185,7 @@ int indexOfPlace(char* a) {
 
 void getInput() {
 	fstream file;
-	file.open("input_file.txt", ios::in);
+	file.open("input.txt", ios::in);
 	while(!file.eof()) {
 		for(int i = 0; i < size; i++) {
 			file.getline(temp, 30);
@@ -230,5 +230,21 @@ void PrimsAlg() {
 }
 
 void main() {
-
+	cout<<"Original Graph: "<<endl<<endl;
+	for(int i = 0; i < size; i++) {
+		for(int j = 0; j < size; j++) {
+			cout<<graph[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+	getInput();
+	PrimsAlg();
+	cout<<endl<<"Minimal Spanning Tree: :"<<endl<<endl;
+	for(int j = 0; i < size; i++) {
+		for(int k = 0; j < size; j++) {
+			cout<<graph[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+	cin>>i;
 }
