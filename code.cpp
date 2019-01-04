@@ -203,6 +203,17 @@ void getInput() {
 	file.close();
 }
 
+int isSymmetric(int arr[size][size]) {
+	for(int i = 0; i < size; i++) {
+		for(int j = i; j < size; j ++) {
+			if(arr[i][j] != arr[j][i]) {
+				return 0;
+			}
+		}
+	}
+	return 1;
+}
+
 void PrimsAlg() {
 	Doubly_Linked_list list;
 	for(int i = 0; i < size; i++) {
@@ -237,7 +248,9 @@ void PrimsAlg() {
 }
 
 void main() {
+
 	getInput();
+	
 	cout<<"Original Graph: "<<endl<<endl;
 	for(int i = 0; i < size; i++) {
 		for(int j = 0; j < size; j++) {
@@ -245,8 +258,16 @@ void main() {
 		}
 		cout<<endl;
 	}
+	
+	if(!isSymmetric(graph)) {
+		cout<<"\n Graph is not undirected!";
+		system("pause");
+		return 0;
+	}
+
 	PrimsAlg();
-	cout<<endl<<"Minimal Spanning Tree: :"<<endl<<endl;
+	
+	cout<<endl<<"Minimal Spanning Tree: "<<endl<<endl;
 	for(int j = 0; j < size; j++) {
 		for(int k = 0; k < size; k++) {
 			cout<<graph[j][k]<<" ";
