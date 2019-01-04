@@ -274,4 +274,33 @@ void main() {
 		}
 		cout<<endl;
 	}
+
+	int counter;
+	cout<<"\nTherefore the connections should be made in the following manner: \n\n";
+	for(int i = 0; i < size; i++) {
+		counter = 0;
+		int k;
+		for(k = i; k < size; k++) {
+			if(graph[i][k] > 0) {
+				break;
+			}
+		}
+		if(k == size) {
+			continue;
+		}
+		cout<<places[i].name<<" should be connected to ";
+		for(int j = i; j < size; j++) {
+			if(graph[i][j] != 0 && counter == 0) {
+				cout<<places[j].name;
+				counter = 1;
+			}
+			else if(graph[i][j] != 0) {
+				cout<<", "<<places[j].name;
+			}
+		}
+		cout<<"."<<endl;
+	}
+	cout<<endl;
+    system("pause");
+	return 0;
 }
