@@ -260,7 +260,7 @@ void main() {
 	}
 	
 	if(!isSymmetric(graph)) {
-		cout<<"\n Graph is not undirected!";
+		cout<<"\n Graph is not undirected!\n\n";
 		system("pause");
 		return 0;
 	}
